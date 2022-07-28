@@ -1,12 +1,12 @@
 # encoding: utf-8
 require 'spec_helper'
-require "logstash/filters/decode_xml_winevents"
+require "logstash/filters/decode_wazuh_events"
 
-describe LogStash::Filters::DecodeXmlWinEvents do
+describe LogStash::Filters::DecodeWazuhEvents do
   describe "Set to Hello World" do
     let(:config) do <<-CONFIG
       filter {
-        decode_xml_winevents {
+        decode_wazuh_events {
           field => "message"
         }
       }

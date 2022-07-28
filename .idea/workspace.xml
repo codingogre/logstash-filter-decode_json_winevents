@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd645165-d73a-4f0c-b7b5-4957c4508339" name="Changes" comment="New Windows sample events">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/logstash-filter-decode_xml_winevents.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/logstash-filter-decode_xml_winevents.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/logstash/filters/decode_xml_winevents.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/logstash/filters/decode_wazuh_nevents.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logstash-filter-decode_xml_winevents.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/logstash-filter-decode_wazuh_events.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/filters/logstash-filter-decode_xml_winevents_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/filters/logstash-filter-decode_wazuh_events_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +31,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/shh/Development/logstash-filter-decode_xml_winevents/samples",
+    "last_opened_file_path": "/Users/shh/Development/logstash-filter-decode_wazuh_events",
     "nodejs_package_manager_path": "npm",
     "ruby.rails.projectView.checked": "true",
     "settings.editor.selected.configurable": "terminal"
@@ -48,6 +52,7 @@
       <option name="presentableId" value="Default" />
       <updated>1658231908632</updated>
       <workItem from="1658231913452" duration="59552000" />
+      <workItem from="1658974916244" duration="1086000" />
     </task>
     <task id="LOCAL-00001" summary="Initial version">
       <created>1658232292654</created>

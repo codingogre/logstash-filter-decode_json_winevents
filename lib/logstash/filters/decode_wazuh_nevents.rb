@@ -2,13 +2,10 @@
 require "logstash/filters/base"
 require "logstash/namespace"
 require 'json'
-require 'nokogiri'
-require 'nori'
-require 'awrence'
 
 
-class LogStash::Filters::DecodeXmlWinEvents < LogStash::Filters::Base
-  config_name "decode_xml_winevents"
+class LogStash::Filters::DecodeWazuhEvents < LogStash::Filters::Base
+  config_name "decode_wazuh_events"
 
   # Set the field to decode
   config :field, :validate => :string, :default => "message",  :required => false
@@ -24,45 +21,11 @@ class LogStash::Filters::DecodeXmlWinEvents < LogStash::Filters::Base
   def filter(event)
     # Grab the field from the Logstash event
     @logger.debug? && @logger.info("field in configuration is defined as: #{@field}")
-    xml = event.get("[#{@field}]")
-    @logger.debug? && @logger.info("value found in field is: #{xml}")
+    event = event.get("[#{@field}]")
+    @logger.debug? && @logger.info("value found in field is: #{event}")
 
-    # Parse the Windows Event (removing namespaces)
-    doc = Nokogiri::XML(xml).remove_namespaces!
-
-    # Rename the <Event> root tag to winlog
-    root = doc.xpath('/Event').first
-    root.name = 'winlog'
-
-    # Process the <Event><System> section.  The following things are done:
-    # 1.) Make any XML element with an attribute e.g. <Execution ProcessID="4" ThreadID="6676" />
-    # Into multiple XML Elements like <ExecutionProcessID>4</ExecutionProcessID>
-    #                                 <ExecutionThreadID>4</ExecutionThreadID>
-    # 2.) Move all <winlog><System> Elements under <winlog>
-    system_data = doc.xpath('/winlog/System')
-    system_data.children.each do |node|
-      if node.keys.length > 0
-        node.keys.each do |key|
-          root.add_child("<#{node.name}#{key}>#{node.attributes[key]}</#{node.name}#{key}>")
-        end
-        node.remove
-        next
-      end
-      root.add_child(node)
-    end
-    system_data.remove
-
-    # Process the <Event><EventData> section by taking the elements with attributes and rewriting them as elements
-    # e.g. <Data Name="SubjectUserSid">S-1-5-18</Data> to <SubjectUserSid>S-1-5-18</SubjectUserSid>
-    event_data = doc.xpath('/winlog/EventData/Data[@Name]')
-    event_data.each do |node|
-      node.swap("<#{node.attributes['Name']}>#{node.text}</#{node.attributes['Name']}>")
-    end
-
-    # Change all of the Element names to snake_case
-    doc_hash = Nori.new(:convert_tags_to => lambda { |tag| tag.snakecase.to_sym }, :advanced_typecasting => false).parse(doc.to_s)
     # Make an exception for the EventData by renaming the snake_case to CamelCase
-    doc_hash[:winlog][:event_data] = doc_hash[:winlog][:event_data].to_camel_keys
+    # doc_hash[:winlog][:event_data] = doc_hash[:winlog][:event_data].to_camel_keys
 
     # Generate required fields
     doc_hash[:event] = {:original => xml, :code => doc_hash[:winlog][:event_id], :provider => doc_hash[:winlog][:provider_name], :kind => "event"}
@@ -99,4 +62,4 @@ class LogStash::Filters::DecodeXmlWinEvents < LogStash::Filters::Base
 
     filter_matched(event)
   end # def filter
-end # class LogStash::Filters::DecodeXmlWinEvents
+end # class LogStash::Filters::DecodeWazuhEvents

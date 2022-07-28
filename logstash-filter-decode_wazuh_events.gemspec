@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
-  s.name = 'logstash-filter-decode_xml_winevents'
+  s.name = 'logstash-filter-decode_wazuh_events'
   s.version         = '1.0.0'
   s.licenses = ['Apache-2.0']
-  s.summary = "This filter decodes an XML Windows Event and outputs ECS"
+  s.summary = "This filter decodes a Wazuh Event and outputs ECS"
   s.description     = "This gem is a Logstash plugin required to be installed on top of the Logstash core pipeline using $LS_HOME/bin/logstash-plugin install gemname. This gem is not a stand-alone program"
   s.authors = ["Shawn Hooton"]
   s.email = 'shawn.hooton@gmail.com'
-  s.homepage = "https://github.com/codingogre/logstash-filter-decode_xml_winevents"
+  s.homepage = "https://github.com/codingogre/logstash-filter-decode_wazuh_events"
   s.require_paths = ["lib"]
 
   # Files
@@ -20,7 +20,4 @@ Gem::Specification.new do |s|
   # Gem dependencies
   s.add_runtime_dependency "logstash-core-plugin-api", ">= 1.60", "<= 2.99"
   s.add_development_dependency 'logstash-devutils'
-  s.add_runtime_dependency 'nokogiri', '~> 1.12', '>= 1.12.5'
-  s.add_runtime_dependency 'awrence', '~> 1.2', '>= 1.2.1'
-  s.add_runtime_dependency 'nori', '~> 2.6', '>= 2.6.0'
 end
