@@ -1,6 +1,6 @@
 ![Logstash Image](https://www.nicepng.com/png/detail/36-363052_easily-import-logstash-errors-into-airbrake-elastic-logstash.png)
 
-# Decode Wazuh JSON Events (Logstash Plugin)
+# Decode JSON Winevents (Logstash Plugin)
 
 This is a plugin for [Logstash](https://github.com/elastic/logstash).
 
@@ -8,7 +8,7 @@ It is fully free and fully open source. The license is Apache 2.0, meaning you a
 
 ## Documentation
 
-This plugin will decode Wazuh Events that are formatted as JSON.  The output of the filter will conform to the [Elastic Common Schema](https://www.elastic.co/guide/en/ecs/current/index.html).
+This plugin will decode Windows Events that are formatted as JSON.  The output of the filter will conform to the [Elastic Common Schema](https://www.elastic.co/guide/en/ecs/current/index.html).
 
 The plugin only takes one parameter:  field.  This points to the field in the Logstash event that contains the Windows Event
 
@@ -33,13 +33,13 @@ output {
 **IMPORTANT**: Since the output will conform to ECS the message field in the Logstash event is copied to event.original and the original Windows Event message is located in winlog.message.
 - Download plugin
 ```sh
-wget https://github.com/codingogre/logstash-filter-decode_xml_winevents/blob/main/logstash-filter-decode_wazuh_events-1.0.0.gem
+wget https://github.com/codingogre/logstash-filter-decode_xml_winevents/blob/main/logstash-filter-decode_json_winevents-1.0.0.gem
 ```
 - Install plugin
 ```sh
 # Logstash 2.3 and higher
 cd to where logstash is installed
-bin/logstash-plugin install --no-verify /path/to/logstash-filter-decode_wazuh_events-1.0.0.gem
+bin/logstash-plugin install --no-verify /path/to/logstash-filter-decode_json_winevents-1.0.0.gem
 ```
 - Restart Logstash
 ```sh
