@@ -4,8 +4,8 @@ require "logstash/namespace"
 require 'json'
 
 
-class LogStash::Filters::DecodeWazuhEvents < LogStash::Filters::Base
-  config_name "decode_wazuh_events"
+class LogStash::Filters::DecodeJsonWinevents < LogStash::Filters::Base
+  config_name "decode_json_winevents"
 
   # Set the field to decode
   config :field, :validate => :string, :default => "message",  :required => false
