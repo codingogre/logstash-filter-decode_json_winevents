@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
-  s.name = 'logstash-filter-decode_wazuh_events'
+  s.name = 'logstash-filter-decode_json_winevents'
   s.version         = '1.0.0'
   s.licenses = ['Apache-2.0']
-  s.summary = "This filter decodes a Wazuh Event and outputs ECS"
+  s.summary = "This filter decodes a JSON Windows Event and outputs ECS"
   s.description     = "This gem is a Logstash plugin required to be installed on top of the Logstash core pipeline using $LS_HOME/bin/logstash-plugin install gemname. This gem is not a stand-alone program"
   s.authors = ["Shawn Hooton"]
   s.email = 'shawn.hooton@gmail.com'
-  s.homepage = "https://github.com/codingogre/logstash-filter-decode_wazuh_events"
+  s.homepage = "https://github.com/codingogre/logstash-filter-decode_json_winevents"
   s.require_paths = ["lib"]
 
   # Files
